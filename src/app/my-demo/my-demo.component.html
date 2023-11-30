@@ -1,0 +1,36 @@
+<main>
+  <div class="container">
+    <div class="pt-5">
+      <h2>Grocery List:</h2>
+      <ul>
+        <!-- <li *ngFor="let item of itemList$ | async"> -->
+        <li *ngFor="let item of itemList()">
+          {{ item.name }} - {{ item.quantity }} - Last edited by:
+          {{ item.lastEditedBy }}
+          <button (click)="removeItem(item)">Remove</button>
+        </li>
+      </ul>
+      <h3 class="my-4">
+        <!-- Total items in the list: {{ totalQuantity }} -->
+        Total items in the list: {{ totalQuantityOfItemsInList() }}
+      </h3>
+
+      <h3>Add Item:</h3>
+      <form (submit)="addItem()">
+        <input
+          type="text"
+          [(ngModel)]="newItemName"
+          placeholder="Name"
+          name="newItemName"
+        />
+        <input
+          type="number"
+          [(ngModel)]="newItemQuantity"
+          placeholder="Quantity"
+          name="newItemQuantity"
+        />
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+</main>
